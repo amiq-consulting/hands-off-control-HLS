@@ -55,7 +55,7 @@ int main() {
 	hls::stream<io_variable_axis_wrapper> min_time_hw;
 
 	double state_q0 = 3;
-	double state_w0 = 0.5;
+	double state_w0 = 0.25;
 
 	double s_q0 = state_q0;
 	double s_w0 = state_w0;
@@ -76,6 +76,7 @@ int main() {
 
 	double l1_horizon = 0;
 
+	double total_err = 0;
 
 	for (int i = 0; i < n_of_steps; i++) {
 		// Calling the software function for minimum time
@@ -194,6 +195,12 @@ int main() {
 	fclose(hardware_output_file);
 
 	// Done outputting to files
+
+	for (int i = 0; i < global_it; i++) {
+		total_err += (hw_u_opt[i] - sw_u_opt[i]) * (hw_u_opt[i] - sw_u_opt[i]);
+	}
+
+	printf("Total accumulated error between hardware and software generated control signals: %f over %d samples (%.2f seconds) \n", total_err, global_it, global_it * Ts);
 
 	return 0;
 }
