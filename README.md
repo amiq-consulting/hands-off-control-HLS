@@ -11,7 +11,7 @@ More details regarding the control problem, the solver, the proposed hardware ar
 - **PC CPU (used for reference times):** 13th Gen Intel(R) Core(TM) i7 - 1355U 
 
 # Blog post
-BLANK
+https://www.consulting.amiq.com/2024/07/10/a-hands-off-control-algorithm-fpga-implementation-using-vitis-hls/
 
 # License
 The application is available for free under the Apache License 2.
